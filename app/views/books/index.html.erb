@@ -24,6 +24,7 @@
        <th class="py-3 px-6 text-left">Title</th>
           <th class="py-3 px-6 text-left">Author</th>
            <th class="py-3 px-6 text-left">Status</th>
+           <th class="py-3 px-6 text-left">Available Copies</th>
     </tr>
   </thead>
   <tbody>
@@ -32,6 +33,7 @@
         <td class = "py-3 px-6 "><%= link_to book.title, book_path(book) %></td>
         <td class = "py-3 px-6"><%= link_to book.author, book_path(book) %></td>
         <td class = "py-3 px-6"><%= link_to book.status ? 'Available' : 'Borrowed', book_path(book)%></td>
+        <td class = "py-3 px-6"><%= link_to book.available_copies, book_path(book)%></td>
       </tr>
     <% end %>
   </tbody>

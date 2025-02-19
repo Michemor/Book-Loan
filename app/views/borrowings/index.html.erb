@@ -26,12 +26,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @borrowing.each do |borrowing| %>
+    <% @borrowings.each do |borrowing| %>
        <tr class="border-b border-gray-200 hover:bg-gray-100">
-        <td class = "py-3 px-6 "><%= borrowing.user_name %></td>
-        <td class = "py-3 px-6"><%= borrowing.book_title %></td>
-        <td class = "py-3 px-6"><%= borrowing.borrowed_at ? 'Available' : 'Borrowed'%></td>
-        <td class = "py-3 px-6"><%= borrowing.returned_at ? 'Available' : 'Borrowed'%></td>
+        <td class = "py-3 px-6 "><%= link_to borrowing.user_name, borrowing_path(borrowing) %></td>
+        <td class = "py-3 px-6"><%= link_to borrowing.book_title, borrowing_path(borrowing) %></td>
+        <td class = "py-3 px-6"><%= link_to borrowing.borrowed_at ? 'Available' : 'Borrowed', borrowing_path(borrowing)%></td>
+        <td class = "py-3 px-6"><%= link_to borrowing.returned_at ? 'Available' : 'Borrowed', borrowing_path(borrowing)%></td>
       </tr>
     <% end %>
   </tbody>

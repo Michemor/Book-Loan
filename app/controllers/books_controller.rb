@@ -23,7 +23,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
 
-    
+
 
     respond_to do |format|
       if @book.save
@@ -67,6 +67,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.expect(book: [ :title, :author, :status ])
+      params.expect(book: [ :title, :author, :status, :available_copies ])
     end
 end
