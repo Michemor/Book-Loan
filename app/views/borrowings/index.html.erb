@@ -1,0 +1,45 @@
+<% content_for :title, "Borrowings" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Borrowings</h1>
+    <%= link_to "New borrowing", new_borrowing_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  </div>
+
+  <div id="borrowings" class="min-w-full">
+    <% if @borrowings.any? %>
+    <div class = "container mx-auto p-6 mt-20"> 
+<table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md border-collapse">
+</div>
+<div class = "overflow-x-auto mt-6">
+ <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+  <thead>
+     <tr class="border-b border-gray-200 hover:bg-gray-100 h-10 w-20">
+       <th class="py-3 px-6 text-left">User Name</th>
+          <th class="py-3 px-6 text-left">Book Title</th>
+           <th class="py-3 px-6 text-left">Date borrowed</th>
+           <th class="py-3 px-6 text-left">Date Returned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @borrowing.each do |borrowing| %>
+       <tr class="border-b border-gray-200 hover:bg-gray-100">
+        <td class = "py-3 px-6 "><%= borrowing.user_name %></td>
+        <td class = "py-3 px-6"><%= borrowing.book_title %></td>
+        <td class = "py-3 px-6"><%= borrowing.borrowed_at ? 'Available' : 'Borrowed'%></td>
+        <td class = "py-3 px-6"><%= borrowing.returned_at ? 'Available' : 'Borrowed'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+    <% else %>
+      <p class="text-center my-10">No borrowings found.</p>
+    <% end %>
+  </div>
+<%= link_to "Back to books", books_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+</div>

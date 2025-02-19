@@ -1,0 +1,43 @@
+<% content_for :title, "Books" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Books</h1>
+    <div class="flex flex-row justify-center space-x-4">
+    <%= link_to "Borrow Book", borrowings_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium mr-4" %>
+    <%= link_to "View History", borrowings_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium mr-4" %>
+    <%= link_to "New book", new_book_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium " %>
+    </div>
+</div>
+    <% if @books.any? %>
+<div class = "container mx-auto p-6 mt-10"> 
+<table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md border-collapse">
+</div>
+<div class = "overflow-x-auto mt-6">
+ <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+  <thead>
+     <tr class="border-b border-gray-200 hover:bg-gray-100 h-10 w-20">
+       <th class="py-3 px-6 text-left">Title</th>
+          <th class="py-3 px-6 text-left">Author</th>
+           <th class="py-3 px-6 text-left">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+       <tr class="border-b border-gray-200 hover:bg-gray-100">
+        <td class = "py-3 px-6 "><%= link_to book.title, book_path(book) %></td>
+        <td class = "py-3 px-6"><%= link_to book.author, book_path(book) %></td>
+        <td class = "py-3 px-6"><%= link_to book.status ? 'Available' : 'Borrowed', book_path(book)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+    <% else %>
+      <p class="text-center my-10">No books found.</p>
+    <% end %>
+</div>
